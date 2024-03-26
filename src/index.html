@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tux Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" id="theme-link" href=""/>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/devicon.min.css"/>
+  <script src="/js/tailwindcss.js" defer></script>
+  <script src="/js/highlightjs/highlight.min.js" defer></script>
+  <script src="/js/mark.js" defer></script>
+  <script src="/js/fontawesome.js" defer></script>
+  <script src="/js/keywords.js" defer></script>
+  <script src="/js/caret_position.js" defer></script>
+  <script src="/js/devicon.js" defer></script>
+  <script src="/js/themes.js" defer></script>
+  <script type="module" src="/js/main.js" defer></script>
+</head>
+<body class="overflow-hidden">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+
+    <div class="w-full hljs
+      flex justify-start
+      "
+      >
+      <div class="
+      flex justify-start w-auto
+      "
+	id="tab-container-head"
+	>
+	<div class="p-2 flex space-x-2
+	  items-center
+	  cursor-pointer
+	  z-0
+	  "
+	  onclick="show_tab(1)"
+	  id="tab-head-1"
+	  >
+	  	<span id="tab-icon-head">
+		  <i class="fa-solid fa-code text-sm"></i>
+		</span>
+	    <span id="file-name-1">Untitled 1</span>
+	    <button class="z-[1]">
+	      <i class="fa-solid fa-xmark"></i>
+	    </button>
+	</div>
+      </div>
+      <button class="p-2 flex space-x-2
+	items-center
+	"
+	id="tab-add-button"
+	onclick="add_tab()"
+	>
+	<i class="fa-solid fa-plus"></i>
+      </buton>
+  </div>
+
+  <div class="w-full h-full flex
+    justify-between overflow-hidden "
+    id="tab-container-body"
+    >
+    <div class="flex flex-col
+	 p-2 hljs
+	 overflow-y-auto
+	 pointer-events-none
+	 "
+      id="line-counter-1">
+      <span>1</span>
+    </div>
+
+    <div class="relative w-full h-full hljs">
+      <textarea class="w-full h-full font-mono
+	  absolute top-0 left-0  
+	  caret-blue-500
+	  z-[1]
+	  p-2
+	  text-transparent
+	  bg-transparent
+	  overflow-auto 
+	  resize-none
+	  [tab-size:2]
+	  outline-none
+	" 
+	id="tab-body-textarea-1"
+	oninput="
+	update_content(this);
+	display_line_count(this)
+	"
+	onscroll="sync_scroll(this)"
+	onkeydown="handle_keydown(event)"
+	spellcheck="false"
+	></textarea>
+      <pre 
+	  id="tab-body-pre-1"
+	  class="w-full h-full absolute
+	  overflow-auto hljs
+	  whitespace-break-spaces
+	  break-words
+	  [tab-size:2]
+	  top-0 left-0 z-0 p-2"><code class="
+	  font-mono
+	  [tab-size:2]
+      "></code></pre>
+    </div>
+  </div>
+
+      <div id="status-bar"
+	class="w-full hljs px-1
+	flex justify-between items-center space-x-2">
+	<span class="flex space-x-2">
+	  <span id="search-field">
+	    <form name="command_form">
+	      <input type="text"
+		id="search-field-input"
+		class="hljs outline-none"
+	        data-tab="1"
+		onkeydown="
+		event.key =='Escape' ? 
+		document.querySelector(`#tab-body-textarea-${this.dataset.tab}`).focus() : ''
+		"
+		/>
+	    </form>
+	  </span>
+	</span>
+	<span class="flex justify-center items-center space-x-4 text-sm">
+	  <span id="file-status">
+	    unsaved
+	  </span>
+	  <span id="file-language" class="hljs-keyword">
+	    plain-text
+	  </span>
+	  <span id="file-theme" class="hljs-comment">
+	    theme
+	  </span>
+	  <span id="file-tab">
+		T: 1
+	  </span>
+	  <span id="file-line-count">
+		L: 1
+	  </span>
+	  <span id="file-char-count">
+		C: 0
+	  </span>
+	  <span id="file-word-count">
+		W: 0
+	  </span>
+	  <span id="file-size">
+		0B
+	  </span>
+	</span>
+      </div>
+  </div>
+
+  <div id="theme-menu"
+    class="absolute z-50 w-screen h-screen bg-black/50
+    flex justify-center items-center left-0 top-0 hidden">
+	<div class="hljs container mx-32 px-4 py-5
+	  rounded-md">
+	  <span class="font-semibold text-lg flex
+	    mb-3">
+	    Themes
+	  </span>
+	  <select
+	    onchange="select_theme(event)"
+	    class="p-2 bg-transparent border
+	    appearance-none flex w-full"
+	    id="select-theme">
+	  </select>
+	</div>
+  </div>
+
+</body>
+</html>

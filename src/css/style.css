@@ -1,0 +1,9 @@
+[id^="line-counter-"]::-webkit-scrollbar, [id*="-popup"]::-webkit-scrollbar  {
+  display: none;
+}
+
+[id^="line-counter-"], [id*="-popup"] {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+
