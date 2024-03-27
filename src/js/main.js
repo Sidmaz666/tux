@@ -603,7 +603,7 @@ document.body.addEventListener("keydown", async function (event) {
 	      localStorage.getItem("theme").length > 0 ?
 	      localStorage.getItem("theme") : "default.css"
 		document.querySelector("#select-theme").insertAdjacentHTML("beforeend", `
-			<option value="${e}" ${e == default_theme ? 'selected' : ''}>
+			<option class="hljs" value="${e}" ${e == default_theme ? 'selected' : ''}>
 			  ${e.replace("base16/","").replaceAll("-"," ").replace(".css",'')}
 			</option>
 		  `)
