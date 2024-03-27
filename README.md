@@ -67,8 +67,9 @@ For ease of developing Tux is styled with tailwindcss and there are few JS libra
 ## TODOS
 
 1. Custom Config File to configure Tux Editor.
-2. Create Tux API's for extension development.
-3. Integrating LSP and more robust features. 
+2. Add Custom Themes.
+3. Create Tux API's for extension development.
+4. Integrating LSP and more robust features. 
 
 
 
