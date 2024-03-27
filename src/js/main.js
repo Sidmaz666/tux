@@ -733,6 +733,38 @@ document.body.addEventListener("keydown", async function (event) {
 	){
 	  await window.__TAURI__.window.appWindow.close()
 	}
+  	if(event.ctrlKey == true &&
+	   event.key == "="
+	){
+	  const font_size = getComputedStyle(document.querySelector(
+	  `#tab-body-textarea-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  )).getPropertyValue('font-size')
+	  document.querySelector(
+	    `#tab-body-textarea-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) + 1 + "px"
+	  document.querySelector(
+	    `#tab-body-pre-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) + 1 + "px"
+	  document.querySelector(
+	    `#line-counter-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) + 1 + "px"
+	}
+  	if(event.ctrlKey == true &&
+	   event.key == "-"
+	){
+	  const font_size = getComputedStyle(document.querySelector(
+	  `#tab-body-textarea-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  )).getPropertyValue('font-size')
+	  document.querySelector(
+	    `#tab-body-textarea-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) - 1 + "px"
+	  document.querySelector(
+	    `#tab-body-pre-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) - 1 + "px"
+	  document.querySelector(
+	    `#line-counter-${document.querySelector("#file-tab").textContent.replace("T:", "").trim()}`
+	  ).style.fontSize = Number(font_size.replace("px","")) - 1 + "px"
+	}
 })
 
 async function save_file(tab){
