@@ -72,6 +72,9 @@ For ease of developing Tux is styled with tailwindcss and there are few JS libra
 4. Create Tux API's for extension development.
 5. Integrating LSP and more robust features.
 
+## DEMO
+
+<a href="https://tuxeditor.netlify.app/">Check Out Web Version</a>
 
 
 
